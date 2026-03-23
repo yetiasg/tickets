@@ -1,0 +1,15 @@
+.git
+.github
+node_modules
+dist
+coverage
+.env
+.env.*
+!.env.example
+pnpm-debug.log
+npm-debug.log
+yarn-error.log
+compose.yml
+README.md
+AGENTS.md
+.DS_Store
