@@ -38,6 +38,16 @@ These rules are non-negotiable and must be followed strictly during every analys
 31. The `pre-push` hook must run tests.
 32. The project uses `cspell` to avoid typos and maintain consistent naming.
 33. The application must always be run through scripts defined in `package.json`, not by ad hoc direct framework commands.
+34. The agent must also use `BUSINESS_CONTEXT.md` as the source of truth for the application purpose and business logic.
+35. The application exposes Swagger documentation.
+36. Swagger documentation must be generated in a way that does not pollute application code.
+37. Swagger files must be organized per module and named `<module>.openapi.ts`.
+38. The project provides a `/docs` folder where files documenting modules, entities, and business solutions will be generated.
+39. `/docs` must contain full descriptions, justifications, and diagrams.
+40. `/docs` must also contain a file describing the infrastructure architecture, and that file must be suitable as the source for generating a visual diagram.
+41. The agent must regularly update `README.md` whenever introduced changes require it.
+42. `README.md` must clearly describe the application, its purpose, the stack, and the full list of requirements and steps needed to run the program locally.
+43. The agent must provide and maintain GitHub Actions CI/CD configuration for the project.
 
 ## 1. Overarching Rules
 
@@ -46,6 +56,7 @@ These rules are non-negotiable and must be followed strictly during every analys
 3. The agent must not guess business requirements. If something is unclear, it must stop the change and clearly state what information is missing.
 4. The agent must not introduce changes beyond the scope of the task without explicit justification.
 5. The agent must leave the code in a better state than it found it, but without performing broad, unsolicited refactors.
+6. Business decisions, domain behavior, and product intent must be aligned with `BUSINESS_CONTEXT.md`.
 
 ## 2. Application Design Rules
 
@@ -158,6 +169,8 @@ Rules for this structure:
 6. If a change adds or updates a dependency, the agent must keep the exact pinned package version in `package.json`.
 7. If the project requires hooks, commit linting, or spell checking, the agent must keep `husky`, `commitlint`, and `cspell` configurations in a consistent state.
 8. Refactoring is allowed only when it genuinely improves security, readability, testability, or maintainability.
+9. If a change affects API contracts, module behavior, entities, or important business flows, the agent should update the relevant files in `/docs`.
+10. If a change affects local setup, stack, workflow, or how the application should be used, the agent must update `README.md`.
 
 ## 7. Agent Behavior
 
@@ -169,6 +182,9 @@ Rules for this structure:
 6. The agent may independently execute command-line commands when they help complete the task safely.
 7. The agent may independently run tests, lint, build, and other verification commands needed to assess change correctness.
 8. If a change requires removing files or directories, the agent may do so independently and must use `rm -rf`.
+9. Before making domain-level decisions, the agent must consult `BUSINESS_CONTEXT.md` and keep implementation aligned with it.
+10. When working on APIs and module contracts, the agent must keep Swagger and `/docs` documentation aligned with the implementation.
+11. When a project requires CI/CD, the agent should keep GitHub Actions configuration aligned with the current workflow and technical requirements.
 
 ## 8. Definition Of Done
 
