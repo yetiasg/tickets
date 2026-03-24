@@ -27,7 +27,9 @@ describe('CreateTicketProductController [Integration]', (): void => {
   });
 
   afterEach(async (): Promise<void> => {
-    await ctx.close();
+    if (ctx !== undefined) {
+      await ctx.close();
+    }
   });
 
   it('createTicketProduct POST /v1/ticket-products', async (): Promise<void> => {

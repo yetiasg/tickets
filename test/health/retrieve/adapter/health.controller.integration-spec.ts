@@ -28,7 +28,9 @@ describe('HealthController [Integration]', (): void => {
     });
 
     afterEach(async (): Promise<void> => {
-      await ctx.close();
+      if (ctx !== undefined) {
+        await ctx.close();
+      }
     });
 
     it('getHealth GET /v1/health', async (): Promise<void> => {
@@ -75,7 +77,9 @@ describe('HealthController [Integration]', (): void => {
     });
 
     afterEach(async (): Promise<void> => {
-      await ctx.close();
+      if (ctx !== undefined) {
+        await ctx.close();
+      }
     });
 
     it('getHealthRateLimit GET /v1/health', async (): Promise<void> => {
