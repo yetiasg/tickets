@@ -81,7 +81,43 @@ The application must support:
 3. creation and management of ticket templates,
 4. configurable validation rules for tickets,
 5. ticket verification flows,
-6. ticket lifecycle tracking.
+6. ticket lifecycle tracking,
+7. explicit management of ticket product availability and additional ticket information,
+8. creation of ticket instances for customers after purchase.
+
+The ticket domain must distinguish clearly between:
+
+1. a ticket product defined by a tenant user,
+2. the available quantity of that ticket product,
+3. a purchased or issued ticket instance assigned to a customer,
+4. the delivery form of the ticket instance.
+
+A tenant user must be able to create a ticket product together with:
+
+1. available quantity,
+2. additional ticket information,
+3. event-related configuration,
+4. validation rules,
+5. template and delivery configuration.
+
+When a customer orders tickets, the customer does not merely reference the ticket product definition.
+The customer receives one or more ticket instances derived from that product.
+
+Each ticket instance must be treated as its own business object with its own:
+
+1. identifier,
+2. lifecycle,
+3. validation history,
+4. delivery representation,
+5. audit trail.
+
+The system must support the following ticket delivery forms:
+
+1. digital ticket generated as a PDF,
+2. digital ticket available as a QR code, for example in an application or on a web page,
+3. physical ticket, which also includes a QR code for validation.
+
+The delivery form must be modeled explicitly because it affects generation, fulfillment, customer access, and validation flow.
 
 Ticket validation must be configurable by the tenant or authorized tenant user.
 
@@ -125,7 +161,8 @@ The application must support:
 2. creating and managing orders,
 3. tracking order fulfillment,
 4. collecting the full order history log,
-5. handling both digital and physical product fulfillment.
+5. handling both digital and physical product fulfillment,
+6. creating ticket instances for customers from purchased ticket products.
 
 Rules:
 
@@ -133,7 +170,9 @@ Rules:
 2. the order log should make it possible to understand what happened, when it happened, and why it happened,
 3. fulfillment logic must support both instantly delivered digital assets and physically shipped products,
 4. fulfillment state should be traceable over time,
-5. order tracking should support operational analysis and troubleshooting.
+5. order tracking should support operational analysis and troubleshooting,
+6. ordering multiple quantities of the same ticket product must result in the correct number of customer-facing ticket instances,
+7. ticket instance generation must remain traceable back to the originating order and order item.
 
 ## 8. Inventory
 
@@ -145,7 +184,15 @@ This means the system should be prepared to support:
 2. inventory reservation,
 3. inventory consumption,
 4. stock visibility,
-5. separate handling rules for digital and physical products.
+5. separate handling rules for digital and physical products,
+6. explicit available quantity for ticket products.
+
+For ticket products, inventory must make it possible to answer at least:
+
+1. how many ticket units are available,
+2. how many are reserved,
+3. how many have been sold,
+4. how many ticket instances have already been issued from the available pool.
 
 Inventory behavior must be treated as a business-critical concern because it directly affects sales, fulfillment, and customer experience.
 
@@ -239,7 +286,9 @@ The following areas are not fully defined yet and should be treated as business 
 7. refund, cancellation, and re-issuance behavior,
 8. detailed analytics requirements,
 9. whether ticket templates are versioned,
-10. whether inventory is reserved before payment completion or after it.
+10. whether inventory is reserved before payment completion or after it,
+11. how additional ticket information should be structured and validated,
+12. whether the same purchased ticket product may produce multiple delivery forms at the same time or exactly one selected form.
 
 If implementation work depends on these questions, the uncertainty should be made explicit.
 

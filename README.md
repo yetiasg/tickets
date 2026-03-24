@@ -1,98 +1,186 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Tickets Core Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend application for creating, generating, validating, and operating event entry tickets.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Purpose
 
-## Description
+This project is a NestJS-based backend focused on:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. ticket generation,
+2. ticket template management,
+3. ticket validation,
+4. order and inventory flows,
+5. provider integrations,
+6. tenant-aware application behavior,
+7. API-first backend development.
 
-## Project setup
+At the current stage, this repository contains backend-only infrastructure and application code.
 
-```bash
-$ pnpm install
-```
+## Stack
 
-## Compile and run the project
+The project is configured around:
 
-```bash
-# development
-$ pnpm run start
+1. NestJS,
+2. TypeScript,
+3. PostgreSQL,
+4. Drizzle ORM,
+5. Redis,
+6. Kafka,
+7. Swagger / OpenAPI,
+8. Docker and Docker Compose,
+9. GitHub Actions,
+10. Husky, Commitlint, ESLint, Prettier, and CSpell.
 
-# watch mode
-$ pnpm run start:dev
+## Requirements
 
-# production mode
-$ pnpm run start:prod
-```
+To run the project locally, you need:
 
-## Run tests
+1. Node.js `22.10.0`
+2. pnpm `10.x` via Corepack
+3. Docker
+4. Docker Compose
 
-```bash
-# unit tests
-$ pnpm run test
+The canonical tool version file is [`.tool-versions`](./.tool-versions).
 
-# e2e tests
-$ pnpm run test:e2e
+## Local Setup
 
-# test coverage
-$ pnpm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+1. Install dependencies:
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+pnpm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+2. Copy environment values if needed and review [`.env.example`](./.env.example):
 
-## Resources
+```bash
+cp .env.example .env
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+3. Start local infrastructure:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+pnpm run infra:up
+```
 
-## Support
+4. Start the application in development mode:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+pnpm run start:dev
+```
 
-## Stay in touch
+The application runs on `http://localhost:3000` by default.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Default public API rate limiting is configurable through:
 
-## License
+1. `HTTP_RATE_LIMIT_MAX_REQUESTS`
+2. `HTTP_RATE_LIMIT_TTL_IN_MILLISECONDS`
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Local Verification
+
+Run the standard verification steps:
+
+```bash
+pnpm run verify
+```
+
+Run the extended verification suite:
+
+```bash
+pnpm run verify:full
+```
+
+Useful individual commands:
+
+```bash
+pnpm run lint
+pnpm run lint:fix
+pnpm run typecheck
+pnpm run test
+pnpm run test:integration
+pnpm run spellcheck
+```
+
+## Local Infrastructure
+
+Available infrastructure commands:
+
+```bash
+pnpm run infra:up
+pnpm run infra:down
+pnpm run infra:reset
+pnpm run infra:logs
+pnpm run infra:ps
+```
+
+The local Docker setup is defined in [compose.yml](./compose.yml).
+
+## Database Workflow
+
+Drizzle ORM tooling is available through:
+
+```bash
+pnpm run db:generate
+pnpm run db:migrate
+pnpm run db:push
+pnpm run db:studio
+```
+
+The Drizzle configuration lives in [drizzle.config.ts](./drizzle.config.ts).
+
+## API Documentation
+
+Swagger documentation is exposed by the application at:
+
+```text
+/api/docs
+```
+
+Swagger configuration is kept outside controller logic as much as possible, with module-level OpenAPI helpers stored in `<module>.openapi.ts` files.
+
+## Documentation
+
+Project documentation is stored in [docs/README.md](./docs/README.md).
+
+The `/docs` folder is intended to hold:
+
+1. module documentation,
+2. entity documentation,
+3. business solution descriptions,
+4. architecture descriptions,
+5. diagrams and diagram sources,
+6. Bruno API collections.
+
+Infrastructure architecture source is stored in [docs/infrastructure-architecture.mmd](./docs/infrastructure-architecture.mmd).
+
+Bruno API collections are stored in [docs/bruno](./docs/bruno).
+
+## CI/CD
+
+GitHub Actions workflows are defined in:
+
+1. [.github/workflows/ci.yml](./.github/workflows/ci.yml)
+2. [.github/workflows/release-docker.yml](./.github/workflows/release-docker.yml)
+
+## Git Hooks And Commit Rules
+
+The project uses:
+
+1. Husky for git hooks,
+2. Commitlint for commit message validation,
+3. CSpell for typo detection.
+
+Configured hooks:
+
+1. `pre-commit`
+2. `pre-push`
+3. `commit-msg`
+
+## Docker
+
+The production container image is built from [Dockerfile](./Dockerfile).
+
+Build locally with:
+
+```bash
+docker build -t tickets-core-backend:local .
+```

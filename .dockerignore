@@ -12,4 +12,10 @@ yarn-error.log
 compose.yml
 README.md
 AGENTS.md
+BUSINESS_CONTEXT.md
+docs
+.husky
+.cspell.json
+commitlint.config.cjs
+drizzle.config.ts
 .DS_Store

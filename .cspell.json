@@ -1,0 +1,34 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "useGitignore": true,
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "pnpm-lock.yaml"
+  ],
+  "words": [
+    "addgroup",
+    "adduser",
+    "appendonly",
+    "bitnami",
+    "Commitlint",
+    "DatetimeProvider",
+    "Drizzle",
+    "fp",
+    "Grafana",
+    "healthcheck",
+    "isready",
+    "loggable",
+    "nestjs",
+    "OpenAPI",
+    "OpenTelemetry",
+    "pglite",
+    "testcontainers",
+    "ticketscorebackend",
+    "tsconfig",
+    "uuidv",
+    "varchar"
+  ]
+}

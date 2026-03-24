@@ -1,0 +1,19 @@
+flowchart TD
+    Client[Client]
+    Api[NestJS API]
+    Swagger[Swagger Docs]
+    Postgres[(PostgreSQL)]
+    Redis[(Redis)]
+    Kafka[(Kafka)]
+    Docs[Docs]
+    Actions[GitHub Actions]
+    Image[Docker Image]
+
+    Client --> Api
+    Client --> Swagger
+    Api --> Postgres
+    Api --> Redis
+    Api --> Kafka
+    Actions --> Image
+    Actions --> Api
+    Docs --> Api
