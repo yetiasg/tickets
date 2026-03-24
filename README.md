@@ -35,7 +35,7 @@ The project is configured around:
 
 To run the project locally, you need:
 
-1. Node.js `22.10.0`
+1. Node.js `24.14.0`
 2. pnpm `10.x` via Corepack
 3. Docker
 4. Docker Compose

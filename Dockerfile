@@ -1,4 +1,4 @@
-FROM node:22.10.0-alpine AS base
+FROM node:24.14.0-alpine AS base
 
 ENV PNPM_HOME=/pnpm
 ENV PATH=$PNPM_HOME:$PATH
@@ -20,7 +20,7 @@ COPY . .
 RUN pnpm run build
 RUN pnpm prune --prod
 
-FROM node:22.10.0-alpine AS runtime
+FROM node:24.14.0-alpine AS runtime
 
 ENV NODE_ENV=production
 ENV PNPM_HOME=/pnpm
