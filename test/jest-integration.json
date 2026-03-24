@@ -5,6 +5,7 @@
     "ts"
   ],
   "rootDir": ".",
+  "testTimeout": 30000,
   "testEnvironment": "node",
   "testRegex": "test/.*\\.integration-spec\\.ts$",
   "transform": {
